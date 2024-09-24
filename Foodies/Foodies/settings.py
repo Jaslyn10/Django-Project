@@ -81,6 +81,12 @@ DATABASES = {
     }
 }
 
+import os
+#url to handle media_root
+MEDIA_URL='/media/'
+
+#define base directory for media uploads
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
