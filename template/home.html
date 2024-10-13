@@ -1,0 +1,59 @@
+{% extends "main.html"%}
+{% block body_block %}
+{% load static %}
+  <!-- slide bar -->
+  <div id="carouselExample" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{% static 'images/hbk1.jpg' %}" class="d-block w-100 pic" alt="..." style="height:300px;width:300px;border-left:150px solid black;border-right:150px solid black;">
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'images/hbk2.jpg' %}" class="d-block w-100 pic" alt="..." style="height:300px;width:300px;border-left:150px solid black;border-right:150px solid black;">
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'images/hbk3.jpg' %}" class="d-block w-100 pic" alt="34534" style="height:300px;width:300px;border-left:150px solid black;border-right:150px solid black;">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+  </div>
+  <!-- Offers -->
+  <div style="background-color: antiquewhite;width:100%;text-align:center; height:45px">Offer valid till 30th July</div>
+
+
+  <!-- cards -->
+  <div class="row">
+    {% for item in Food %}
+      <div class="col-md-6 mb-4"> <!-- Adjust to 6 columns for 2 cards per row -->
+        <div class="card" style="width: 100%;"> <!-- Ensure card takes full width of the column -->
+          <img src="{{ item.images.url }}" class="card-img-top" alt="{{ item.name }}" height="200px" style="padding:20px 150px;background-color:blanchedalmond">
+          <div class="card-body">
+            <h5 class="card-title">{{ item.name }} - {{ item.cost }} Rs</h5>
+            <p class="card-text">{{ item.category }}</p>
+            <a href="{% url 'Product' id=item.id %}" class="btn btn-primary">View</a>
+            <a href="{% url 'addWish' id=item.id %}" class="btn btn-primary">+ Wish list</a>
+            <a href="{% url 'addCart' id=item.id %}" class="btn btn-primary">+ Add to cart</a>
+
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+ 
+{% endblock %}
+<!-- 
+{% block desc_block %}
+<p>Desc block</p>
+{% endblock %}
+{% block price_block %}
+<p>Price of Each food</p>
+{% endblock %}  -->
